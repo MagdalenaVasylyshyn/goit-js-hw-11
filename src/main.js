@@ -28,13 +28,11 @@ function fetchImages(event) {
       return response.json();
     })
     .then(images => {
-      setTimeout(() => {
         loader.classList.add('hide');
         if (images.hits.length === 0) {
-          return showMessage();
+          return showMessage('Sorry, there are no images matching your search query. Please try again!');
         }
         renderImages(images.hits);
-      }, 2000);
     })
     .catch(error => console.log(error))
     .finally(() => {
